@@ -1,2 +1,2 @@
-# agolrest
-Using ESRI REST to edit ArcGIS Online data
+# cryptidtest
+Using ESRI REST to edit ArcGIS Online data for my cryptid midterm
