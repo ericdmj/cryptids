@@ -25,7 +25,7 @@
         const view = new MapView({
           map: map,
           center: [-98.583333, 39.833333], // Longitude, latitude
-          zoom: 6, // Zoom level
+          zoom: 4, // Zoom level
           container: "viewDiv" // Div element
         });
 
@@ -33,134 +33,7 @@
         const graphicsLayer = new GraphicsLayer();  
         map.add(graphicsLayer);
 
-        // defining the geometry of the point
-        const point = { //Create a point
-          type: "point",  
-          longitude: -68.321218,    //long lat of vacation house for October 2024
-          latitude: 44.339129
-        };
-
-        // defining the marker style
-        const simpleMarkerSymbol = {  
-          type: "simple-marker",
-          style: "diamond",  
-          size: "16px",
-          color: [255,179,67],  // Color of fall leaves
-          outline: {  
-            color: [149,6,6], // fall red  
-            width: 1
-          }  
-        };
-
-        // defining popup properties
-        const popupTemplate = {
-            title: "{Name}",
-            content: "{Description}"
-        }
-        const attributes = {
-            Name: "Starboard Cottage",
-            Description: "Stunning cottage overlooking Somes Sound, can't wait to go next month!"
-        }
-
-        // creating the point
-        const pointGraphic = new Graphic({  
-          geometry: point,  
-          symbol: simpleMarkerSymbol,
-
-          // adding popup properties
-          attributes: attributes,
-          popupTemplate: popupTemplate
-
-        });
-
-        // add the point to the graphicsLayer
-        graphicsLayer.add(pointGraphic);
-
-        // First create a line geometry
-        const polyline = {
-          type: "polyline", // autocasts as new Polyline()
-          paths: [[-68.321596, 44.339116], [-68.323310, 44.338122], [-68.326179, 44.339890], [-68.332314, 44.337929], [-68.335535, 44.336174], [-68.337364, 44.359077], [-68.330688, 44.368839], [-68.324012, 44.370618], [-68.309393, 44.364358], [-68.307250, 44.363555], [-68.299646, 44.367860], [-68.295716, 44.374609], [-68.284669, 44.380964], [-68.238836, 44.376486], [-68.220468, 44.382989]]
-        };
-
-        // Create a symbol for drawing the line
-        const lineSymbol = {
-          type: "simple-line", // autocasts as SimpleLineSymbol()
-          color: [149,6,6], // fall red color
-          width: 3
-        };
-
-        // Create an object for storing attributes related to the line
-        const lineAtt = {
-          Name: "Route to Bar Harbor",
-          Mode: "By car",
-          Length: "TBD"
-        };
-
-        // Create the polyline graphic
-         const polylineGraphic = new Graphic({
-          geometry: polyline,
-          symbol: lineSymbol,
-          attributes: lineAtt,
-          popupTemplate: {
-            // autocasts as new PopupTemplate()
-            title: "{Name}",
-            content: [
-              {
-                type: "fields",
-                fieldInfos: [
-                  {
-                    fieldName: "Name"
-                  },
-                  {
-                    fieldName: "Mode"
-                  },
-                  {
-                    fieldName: "Length"
-                  }
-                ]
-              }
-            ]
-          }
-        });
-
-        // defining polygon popup properties
-        const polygonpopupTemplate = {
-            title: "{Name}",
-            content: "{Description}"
-        }
-        const polygonattributes = {
-            Name: "Acadia National Park",
-            Description: "Going to be doing a fair bit of hiking and eating here!"
-        }
         
-        // Create a polygon geometry
-        const polygon = {
-          type: "polygon", // autocasts as new Polygon()
-          rings: [[-68.262105, 44.421548], [-68.183449, 44.362914], [-68.230546, 44.300268], [-68.347758, 44.292003], [-68.297813, 44.239284], [-68.336210, 44.221080], [-68.418200, 44.318861], [-68.286842, 44.389253]]
-        };
-
-        // Create a symbol for rendering the graphic
-        const fillSymbol = {
-          type: "simple-fill", // autocasts as new SimpleFillSymbol()
-          color: [44,95,52, 0.3],
-          outline: {
-            // autocasts as new SimpleLineSymbol()
-            color: [255, 255, 255, 0.5],
-            width: 2
-          }
-        };
-
-        // Add the geometry and symbol to a new graphic
-        const polygonGraphic = new Graphic({
-          geometry: polygon,
-          symbol: fillSymbol,
-          // adding popup properties
-          attributes: polygonattributes,
-          popupTemplate: polygonpopupTemplate
-        });
-
-        // Add the graphics to the view's graphics layer
-        view.graphics.addMany([polylineGraphic, polygonGraphic]);
 
         
         // Define a pop-up for photoLayer
