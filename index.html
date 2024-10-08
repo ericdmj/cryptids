@@ -36,112 +36,17 @@
         
 
         
-        // Define a pop-up for photoLayer
-        const popupPhoto = {
-          "title": "<span style='font-family: Garamond; color: #2c5f34'>{Title}</span>",
-          "content": "<span style='font-family: Garamond; font-size: 14px; line-height: 150%;'><b>Description:</b> {Description}<br><b>Project:</b> {ProjectName}<br><b>Date taken:</b> {DateTakenExact}<br><b>Photographer:</b> {Photographer}<br><br><b>&nbsp;</b> {DigitalMainePreview}<br></span>"
-        }
-        
-        // Adding the constructor for the feature layer
-        const photosLayer = new FeatureLayer({
-          url: "https://services1.arcgis.com/RbMX0mRVOFNTdLzd/arcgis/rest/services/MGS_Field_Photos_Digital_Maine/FeatureServer",
-
-          //adding the popup here
-          outFields: ["Title","DateTakenExact","DigitalMainePreview"],
-          popupTemplate: popupPhoto
+             
+        // Adding the constructor for the counties feature layer
+        const countiesLayer = new FeatureLayer({
+          url: "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/USA_Census_Counties/FeatureServer"
 
         });
 
         // Adding the feature layer to the map
-        map.add(photosLayer);
+        map.add(countiesLayer);
        
-        // Setting up the icon
-        const airportRenderer = {
-        "type": "simple",
-        "symbol": {
-          "type": "picture-marker",
-          "url": "https://ericdmj.github.io/agol/airport.png",
-          "width": "18px",
-          "height": "18px"
-        }
-      }
         
-        //const to make the airport labels
-        const airportLabels = {
-          symbol: {
-            type: "text",
-            color: "#FFFFFF",
-            haloColor: "#2c5f34",
-            haloSize: "1px",
-            font: {
-              size: "12px",
-              family: "Noto Sans",
-              style: "italic",
-              weight: "normal"
-            }
-          },
-          labelPlacement: "above-center",
-          labelExpressionInfo: {
-            expression: "$feature.Fac_Name"
-          }
-        };
-      
-        // Adding the constructor for the feature layer
-        const airportLayer = new FeatureLayer({
-          url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports_EJ/FeatureServer",
-          renderer: airportRenderer, // Calling the icon
-          definitionExpression: "Fac_Type = 'AIRPORT'", //adding sql to filter for airports
-
-          labelingInfo: [airportLabels] //adding the labels
-
-        });
-
-        // Adding the feature layer to the map
-        map.add(airportLayer);
-
-        // Setting up the icon
-        const heliportRenderer = {
-        "type": "simple",
-        "symbol": {
-          "type": "picture-marker",
-          "url": "https://ericdmj.github.io/agol/heliport.png",
-          "width": "18px",
-          "height": "18px"
-        }
-      }
-        
-        //const to make the airport labels
-        const heliportLabels = {
-          symbol: {
-            type: "text",
-            color: "#FFFFFF",
-            haloColor: "#950606",
-            haloSize: "1px",
-            font: {
-              size: "12px",
-              family: "Noto Sans",
-              style: "italic",
-              weight: "normal"
-            }
-          },
-          labelPlacement: "above-center",
-          labelExpressionInfo: {
-            expression: "$feature.Fac_Name"
-          }
-        };
-      
-        // Adding the constructor for the feature layer
-        const heliportLayer = new FeatureLayer({
-          url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/US_Airports_EJ/FeatureServer",
-          renderer: heliportRenderer, // Calling the icon
-          definitionExpression: "Fac_Type = 'HELIPORT'", //adding sql to filter for airports
-
-          labelingInfo: [heliportLabels] //adding the labels
-
-        });
-
-        // Adding the feature layer to the map
-        map.add(heliportLayer);
         
         // creates the search box
         const searchWidget = new Search({
