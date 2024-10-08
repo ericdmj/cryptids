@@ -39,9 +39,9 @@
              
         // Adding the constructor for the counties feature layer
         const countiesLayer = new FeatureLayer({
-          portalItem: {  // autocasts as esri/portal/PortalItem
-            id: "14c5450526a8430298b2fa74da12c2f4"
-          }
+          url: "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/USA_Census_Counties/FeatureServer",
+          geometryType: "polygon"
+
         });
 
         // Adding the feature layer to the map
