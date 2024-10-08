@@ -121,6 +121,7 @@
           position: "top-left"
         });
 
+        /*
         const cryptidsRenderer = {
           "type": "simple",
           "symbol": {
@@ -130,6 +131,61 @@
             "height": "30px"
           }
         }
+        */
+
+        const cryptidsRenderer = {
+          type: "unique-value",
+          legendOptions: {
+            title: "Cryptid Type"
+          },
+          field: "CryptidType",
+          uniqueValueInfos: [{
+            value: "bipedalhumanoid",
+            label: "Bipedal/Humanoid",
+            symbol: {
+              type: "picture-marker",
+              url: "https://img.icons8.com/external-stick-figures-gan-khoon-lay/51/external-creature-evil-characters-stick-figures-gan-khoon-lay.png",
+              width: "30px",
+              height: "30px"
+            }
+          }, {
+            value: "quadruped",
+            label: "Quadruped",
+            symbol: {
+              type: "picture-marker",
+              url: "https://img.icons8.com/external-basicons-round-(solid)-edt.graphics/50/external-Unicorn-animals-basicons-round-(solid)-edt.graphics.png",
+              width: "30px",
+              height: "30px"
+            }
+          }, {
+            value: "wings",
+            label: "Wings",
+            symbol: {
+              type: "picture-marker",
+              url: "https://img.icons8.com/external-icongeek26-outline-icongeek26/64/external-dragon-chinese-icongeek26-outline-icongeek26-1.png",
+              width: "30px",
+              height: "30px"
+            }
+          }, {
+            value: "fins",
+            label: "Fins",
+            symbol: {
+              type: "picture-marker",
+              url: "https://img.icons8.com/ios/50/top-view-fish--v1.png",
+              width: "30px",
+              height: "30px"
+            }
+          }, {
+            value: "othertype",
+            label: "Other",
+            symbol: {
+              type: "picture-marker",
+              url: "https://img.icons8.com/emoji/48/fog.png",
+              width: "30px",
+              height: "30px"
+            }
+          }]
+        };
 
         
         //const to make the cryptid labels
@@ -147,7 +203,7 @@
           },
           labelPlacement: "below-center",
           labelExpressionInfo: {
-            expression: "$feature.Name"
+            expression: "$feature.CryptidName"
           }
         };
         
