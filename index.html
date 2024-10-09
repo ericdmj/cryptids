@@ -229,8 +229,11 @@
         // Begin Editor constructor
         const editor = new Editor({
         view: view,
-        settingsMenu: false,
-        layerInfos: [pointInfos]
+        layerInfos: [pointInfos],
+        visibleElements: {
+        snappingControlsElements: {
+          settingsMenu: false
+        }
         }); // End Editor constructor
 
         // Add the widget to the view
