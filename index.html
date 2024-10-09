@@ -60,6 +60,16 @@
           index: 2
         });
 
+        // create the locate button
+        const locateBtn = new Locate({
+          view: view
+        });
+
+        // Add the locate widget to the top left corner of the view
+        view.ui.add(locateBtn, {
+          position: "top-left"
+        });
+
         // Custom Basemap List
         const customBasemaps = [
             new Basemap({
@@ -110,16 +120,6 @@
 
         // Add the expand instance to the ui
         view.ui.add(bgExpand, "top-left");
-
-        // create the locate button
-        const locateBtn = new Locate({
-          view: view
-        });
-
-        // Add the locate widget to the top left corner of the view
-        view.ui.add(locateBtn, {
-          position: "top-left"
-        });
 
         /*
         const cryptidsRenderer = {
