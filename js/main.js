@@ -1,0 +1,250 @@
+// sets the AMD modules
+require(["esri/config", "esri/Map", "esri/views/MapView","esri/Basemap","esri/widgets/BasemapGallery","esri/widgets/Expand","esri/widgets/Locate","esri/widgets/Search","esri/Graphic","esri/layers/GraphicsLayer","esri/layers/FeatureLayer","esri/widgets/Editor","esri/widgets/Legend"], function(esriConfig, Map, MapView, Basemap, BasemapGallery, Expand, Locate, Search, Graphic, GraphicsLayer, FeatureLayer, Editor, Legend) {   
+  esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurA0NJnJge5mvBzdWw05KZVSc-rH0g5ATkOEM72zKXv9kE7x87aUFvshXADkQU53T8CakkL1B1R2r7I2_9kfS1-XHaF7MVYxQ6VLd5p6tEgpzr75twGhsRz6fK1dSQ2ogOJ1_dHzcsbRTtsGi03Zua1qchYuESnptzJ80EJ1mYqWJo3iuugUMeoYeXbWxZQfRu9bQKBf9ibtwnTc5YG16I7WxJOj3SrYYt-VrPMyknXjtAT1_V1XfrGt6";
+  // creates the map and assigns initial basemap
+  const map = new Map({
+    basemap: "arcgis/modern-antique" // Basemap layer service 
+  });
+
+  // sets center point (via long and lat) and zoom level
+  const view = new MapView({
+    map: map,
+    center: [-98.583333, 39.833333], // Longitude, latitude
+    zoom: 4, // Zoom level
+    container: "viewDiv" // Div element
+  });
+
+  // adding the constructor for the graphicslayer
+  const graphicsLayer = new GraphicsLayer();  
+  map.add(graphicsLayer);
+
+  
+
+  
+  /*     
+  // Adding the constructor for the counties feature layer
+  const countiesLayer = new FeatureLayer({
+    url: "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/USA_Census_Counties/FeatureServer/0",
+    geometryType: "polygon"
+
+  });
+
+  // Adding the feature layer to the map
+  map.add(countiesLayer);
+  */
+  
+  
+  // creates the search box
+  const searchWidget = new Search({
+    view: view
+  });
+  // Adds the search widget below other elements in
+  // the top left corner of the view
+  view.ui.add(searchWidget, {
+    position: "top-right",
+    index: 2
+  });
+
+  // create the locate button
+  const locateBtn = new Locate({
+    view: view
+  });
+
+  // Add the locate widget to the top left corner of the view
+  view.ui.add(locateBtn, {
+    position: "top-left"
+  });
+
+  // Custom Basemap List
+  const customBasemaps = [
+      new Basemap({
+          portalItem: {
+              id: "67ab7f7c535c4687b6518e6d2343e8a2"  // Ocean Basemap ID
+          },
+          thumbnailUrl: "https://www.arcgis.com/sharing/rest/content/items/67ab7f7c535c4687b6518e6d2343e8a2/info/thumbnail/thumbnail1561651100093.jpeg" // Correct URL for thumbnail
+      }),
+      new Basemap({
+          portalItem: {
+              id: "826498a48bd0424f9c9315214f2165d4"  // Colored Pencil Basemap ID
+          },
+          thumbnailUrl: "https://www.arcgis.com/sharing/rest/content/items/826498a48bd0424f9c9315214f2165d4/info/thumbnail/thumbnail1580490854424.jpeg"
+      }),
+      new Basemap({
+          portalItem: {
+              id: "f35ef07c9ed24020aadd65c8a65d3754"  // Modern Antique Basemap ID
+          },
+          thumbnailUrl: "https://www.arcgis.com/sharing/rest/content/items/f35ef07c9ed24020aadd65c8a65d3754/info/thumbnail/thumbnail1584383047375.jpeg"
+      }),
+      new Basemap({
+          portalItem: {
+              id: "867895a71a1840399476fc717e76bb43"  // Mid-Century Basemap ID
+          },
+          thumbnailUrl: "https://www.arcgis.com/sharing/rest/content/items/867895a71a1840399476fc717e76bb43/info/thumbnail/thumbnail1563382006810.jpeg"
+      }),
+      new Basemap({
+          portalItem: {
+              id: "75a3ce8990674a5ebd5b9ab66bdab893"  // Newspaper Basemap ID
+          },
+          thumbnailUrl: "https://www.arcgis.com/sharing/rest/content/items/75a3ce8990674a5ebd5b9ab66bdab893/info/thumbnail/thumbnail1563382193586.jpeg"
+      })
+  ];
+
+  // builds basemap gallery using custom basemaps
+  const basemapGallery = new BasemapGallery({
+    view: view,
+    source: customBasemaps
+  });
+
+  // Create an Expand instance for the basemap gallery and set the content
+  // property to the DOM node of the basemap gallery widget
+  const bgExpand = new Expand({
+    view: view,
+    content: basemapGallery
+  });
+
+  // Add the expand instance to the ui
+  view.ui.add(bgExpand, "top-left");
+
+  /*
+  const cryptidsRenderer = {
+    "type": "simple",
+    "symbol": {
+      "type": "picture-marker",
+      "url": "https://img.icons8.com/?id=78608&format=png&color=0000AA",
+      "width": "30px",
+      "height": "30px"
+    }
+  }
+  */
+
+  const cryptidsRenderer = {
+    type: "unique-value",
+    legendOptions: {
+      title: "Cryptid Type"
+    },
+    field: "CryptidType",
+    uniqueValueInfos: [{
+      value: "bipedalhumanoid",
+      label: "Two legs",
+      symbol: {
+        type: "picture-marker",
+        url: "https://img.icons8.com/external-stick-figures-gan-khoon-lay/51/external-creature-evil-characters-stick-figures-gan-khoon-lay.png",
+        width: "30px",
+        height: "30px"
+      }
+    }, {
+      value: "quadruped",
+      label: "Four legs",
+      symbol: {
+        type: "picture-marker",
+        url: "https://img.icons8.com/external-basicons-round-(solid)-edt.graphics/50/external-Unicorn-animals-basicons-round-(solid)-edt.graphics.png",
+        width: "30px",
+        height: "30px"
+      }
+    }, {
+      value: "wings",
+      label: "Wings",
+      symbol: {
+        type: "picture-marker",
+        url: "https://img.icons8.com/external-icongeek26-outline-icongeek26/64/external-dragon-chinese-icongeek26-outline-icongeek26-1.png",
+        width: "30px",
+        height: "30px"
+      }
+    }, {
+      value: "fins",
+      label: "Fins",
+      symbol: {
+        type: "picture-marker",
+        url: "https://img.icons8.com/ios/50/top-view-fish--v1.png",
+        width: "30px",
+        height: "30px"
+      }
+    }, {
+      value: "othertype",
+      label: "Other",
+      symbol: {
+        type: "picture-marker",
+        url: "https://img.icons8.com/emoji/48/fog.png",
+        width: "30px",
+        height: "30px"
+      }
+    }]
+  };
+
+  
+  //const to make the cryptid labels
+  const cryptidLabels = {
+    symbol: {
+      type: "text",
+      color: "#000000",
+      haloColor: "#F4EEE3",
+      haloSize: "1px",
+      font: {
+        size: "11px",
+        family: "Playfair Display",
+        weight: "normal",
+        style: "italic"
+      }
+    },
+    labelPlacement: "below-center",
+    labelExpressionInfo: {
+      expression: "$feature.CryptidName"
+    }
+  };
+  
+
+  //adding the const for the feature layer
+  const cryptidsLayer = new FeatureLayer({
+  url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Cryptid_Sighting/FeatureServer",
+  
+  renderer: cryptidsRenderer, // calling the icon
+
+  labelingInfo: [cryptidLabels] // adding the labels
+
+  });
+
+  //adding the feature layer to the map
+  map.add(cryptidsLayer);
+
+  // Set the point layer's LayerInfo
+  const pointInfos = {
+  layer: cryptidsLayer
+  }
+
+  // Begin Editor constructor
+  const editor = new Editor({
+  view: view,
+  layerInfos: [pointInfos],
+  visibleElements: {
+    settingsMenu: false
+  }
+  }); // End Editor constructor
+
+  // Add the widget to the view
+  view.ui.add(editor, "top-right");
+
+  /*
+  // Create an Expand instance for the editor and set the content
+  // property to the DOM node of the Editor widget
+  const editorExpand = new Expand({
+    view: view,
+    content: editor
+  });
+
+  // Add the expand instance to the ui
+  view.ui.add(editorExpand, "top-right");
+  */
+
+
+
+  // adding a legend
+  let legend = new Legend({
+    view: view,
+    // styles the legend as a card
+    style: "card"
+  
+  });
+
+  view.ui.add(legend, "bottom-left");
+
+});
