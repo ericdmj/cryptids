@@ -286,14 +286,87 @@
           layer: cryptidsLayer
         }
 
-        // Begin Editor constructor
+
+        // Loop through the webmap's layers and set an edit configuration for each
+        view.map.layers.forEach((layer) => {
+            // Specify a few of the fields to edit within the form
+            editCryptidsLayer = {
+              layer: layer,
+              formTemplate: {
+                elements: [
+                {
+                  type: "field",
+                  fieldName: "CryptidType",
+                  label: "What's its basic body form?"
+                },
+                {
+                  type: "field",
+                  fieldName: "CryptidName",
+                  label: "Do you know what kind of cryptid it is?"
+                },
+                {
+                  type: "field",
+                  fieldName: "Description",
+                  label: "Describe the creature you saw:"
+                },
+                {
+                  type: "field",
+                  fieldName: "Locomotion",
+                  label: "How was it moving?"
+                },
+                {
+                  type: "field",
+                  fieldName: "Environment",
+                  label: "What were its surroundings like?"
+                },
+                {
+                  type: "field",
+                  fieldName: "RecorderName",
+                  label: "Your name or initials:"
+                },
+                {
+                  type: "field",
+                  fieldName: "SightingDate",
+                  label: "Date and time seen:"
+                }
+                ]
+              }
+            };
+          
+        });
+
+
+        // Create a custom group to separate the different areas of crime.
+        // This function takes a 'grouping' object containing a feature template and feature layer.
+
+        function customGroup(grouping) {
+            let groupHeading = "What basic form is it? Click the icon and add to the map, and then add details.";
+            return groupHeading;
+        }
+
+
         const editor = new Editor({
-          view: view,
-          layerInfos: [pointInfos],
-          visibleElements: {
-            settingsMenu: false
-          }
-        }); // End Editor constructor
+            view: view,
+            // Pass in the configurations.
+            layerInfos: [editCryptidsLayer],
+            // Override the default template behavior of the Editor widget
+            supportingWidgetDefaults: {
+                featureTemplates: {
+                groupBy: customGroup
+                }
+            }
+            }); // End Editor constructor
+
+
+
+        // Begin Editor constructor
+        //const editor = new Editor({
+          //view: view,
+          //layerInfos: [pointInfos],
+          //visibleElements: {
+            //settingsMenu: false
+          //}
+        //}); // End Editor constructor
 
         // Create an Expand instance for the Editor and set the content
         // property to the DOM node of the Editor widget
@@ -305,25 +378,6 @@
 
         // Add the expand instance to the ui
         view.ui.add(editorExpand, "top-right");
-
-
-
-        // Add the widget to the view
-        //view.ui.add(editor, "top-right");
-
-        /*
-        // Create an Expand instance for the editor and set the content
-        // property to the DOM node of the Editor widget
-        const editorExpand = new Expand({
-          view: view,
-          content: editor
-        });
-
-        // Add the expand instance to the ui
-        view.ui.add(editorExpand, "top-right");
-        */
-
-
 
         // adding a legend
         let legend = new Legend({
@@ -382,6 +436,7 @@
             expandIcon: "filter",
             group: "top-left"
           });
+
           //clear the filters when user closes the expand widget
           reactiveUtils.when(
             () => !cryptidsExpand.expanded,
@@ -445,32 +500,61 @@
     
     <!-- The div to display the map -->
     <div id="viewDiv">
-      <!-- <div class="popup">
+       <div class="popup">
         <button id="close">&times;</button>
-        <h1>Welcome to Source to Sink!</h1>
+        <h1>Cryptids of the USA</h1>
+        <h2>A tool for gathering sightings of mysterious creatures</h2>
+        <p>Intro paragraph!</p>
         <p>
-            This is a tool to analyze where your water comes from.
-            Whether you're an expert on hydrology, or you just want to know where your water comes from, this tool can
-            help.
-            Begin by either entering in an address or picking a point on the map.
-            Also, explore different ways to see where you water comes from, or goes to! <br>
-            <br>
-  
-            Hover over or click individual watersheds for more information or enter a location in the search bar to zoom
-            to it!
+            <table id="navigation">
+                <tr>
+                  <td><img src="images/icon-zoom.gif"></td>
+                  <td>&nbsp;</td>
+                  <td>Zoom in and out of the map</td>
+                </tr>
+                <tr>
+                  <td><img src="images/icon-basemap.gif"></td>
+                  <td></td>
+                  <td>Change the basemap layer</td>
+                </tr>
+                <tr>
+                  <td><img src="images/icon-filter.gif"></td>
+                  <td></td>
+                  <td>Toggle to filter by cryptid name</td>
+                </tr>
+                <tr>
+                  <td><img src="images/icon-legend.gif"></td>
+                  <td></td>
+                  <td>Open and close the map legend</td>
+                </tr>
+                <tr>
+                  <td><img src="images/address-bar.gif"></td>
+                  <td></td>
+                  <td>Type in a specific address or location</td>
+                </tr>
+                <tr>
+                  <td><img src="images/icon-locate.gif"></td>
+                  <td></td>
+                  <td>Center the map on your current location</td>
+                </tr>
+                <tr>
+                  <td><img src="images/icon-editor.gif"></td>
+                  <td></td>
+                  <td>Toggle the editor window to add/edit data</td>
+                </tr>
+              </table> 
   
         </p>
         <p>
-            Created by Mallory Johnson, Mike Imhoff, Drew ten Bensel, and <br> Alex Larson for UW-Madison Geography 575
-            - Spring 2023
+            Created by Eric Johnson for University of Wisconsin-Madison Geography 576 - Fall 2024
         </p>
         <p>
-            Data Gathered from: <a href="https://data-wi-dnr.opendata.arcgis.com/" target="_blank">WI DNR GIS Portal</a>
+            Much cryptid info from: <a href="https://cryptidz.fandom.com/wiki/Cryptid_Wiki" target="_blank">Cryptid Wiki</a>
         </p>
         <button id="letsGo">
             <e href="#">Explore!</e>
         </button>
-      </div> -->
+      </div>
     </div> 
 
 

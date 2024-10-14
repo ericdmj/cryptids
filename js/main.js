@@ -1,5 +1,3 @@
-/*
-
 //initial popup window
 window.addEventListener("load", function () {
   this.setTimeout(
@@ -19,4 +17,3 @@ document.querySelector("#letsGo").addEventListener("click", function () {
   document.querySelector(".popup").style.display = "none";
 });
 
-*/
