@@ -6,7 +6,7 @@
 }
 
 .popup {
-    background-image: url('/images/tanbackground.jpg');
+    background-image: linear-gradient(25deg, #045b8dad, #74a9cfb4, #74a9cfb4, #045b8dad);
     width: 75%;
     padding: 30px 40px;
     position: absolute;
