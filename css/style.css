@@ -6,7 +6,7 @@
 }
 
 .popup {
-    background-image: linear-gradient(25deg, #045b8dad, #74a9cfb4, #74a9cfb4, #045b8dad);
+    background-image: linear-gradient(25deg, #7f674fad, #b19a83b4, #b19a83b4, #7f674fad);
     width: 75%;
     padding: 30px 40px;
     position: absolute;
@@ -17,7 +17,7 @@
     font-family: 'Playfair Display', 'Georgia', 'Times', serif;
     display: none;
     z-index: 10000000;
-    color: #3a2502;
+    color: #403428;
 }
 
 .popup h1 {
