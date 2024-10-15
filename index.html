@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Cryptids of the USA</title>
+    <title>Cryptids of the United States</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device width,initial-scale=1">
     <meta name="description" content="" />
 
     <!-- adding my stylesheet -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- adding my Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 
     <!-- Calls for the ArcGIS API's CSS file and JS library. -->
     <link rel="stylesheet" href="https://js.arcgis.com/4.30/esri/themes/light/main.css">
@@ -57,12 +62,25 @@
         const searchWidget = new Search({
           view: view
         });
+
+
+        // Create an Expand instance for the Search widget and set the content
+        // property to the DOM node
+        const searchExpand = new Expand({
+          view: view,
+          content: searchWidget
+        });
+
+        // Add the expand instance to the ui
+        view.ui.add(searchExpand, "top-right");
+
+
         // Adds the search widget below other elements in
         // the top left corner of the view
-        view.ui.add(searchWidget, {
-          position: "top-right",
-          index: 2
-        });
+        //view.ui.add(searchWidget, {
+          //position: "top-right",
+          //index: 2
+        //});
 
         // create the locate button
         const locateBtn = new Locate({
@@ -71,7 +89,7 @@
 
         // Add the locate widget to the top left corner of the view
         view.ui.add(locateBtn, {
-          position: "top-left"
+          position: "top-right"
         });
 
         // Custom Basemap List
@@ -286,14 +304,76 @@
           layer: cryptidsLayer
         }
 
-        // Begin Editor constructor
+
+        // Loop through the webmap's layers and set an edit configuration for each
+        view.map.layers.forEach((layer) => {
+            // Specify a few of the fields to edit within the form
+            editCryptidsLayer = {
+              layer: layer,
+              formTemplate: {
+                elements: [
+                {
+                  type: "field",
+                  fieldName: "CryptidType",
+                  label: "What's its basic body form?"
+                },
+                {
+                  type: "field",
+                  fieldName: "CryptidName",
+                  label: "Do you know what kind of cryptid it is?"
+                },
+                {
+                  type: "field",
+                  fieldName: "Description",
+                  label: "Describe the creature you saw:"
+                },
+                {
+                  type: "field",
+                  fieldName: "Locomotion",
+                  label: "How was it moving?"
+                },
+                {
+                  type: "field",
+                  fieldName: "Environment",
+                  label: "What were its surroundings like?"
+                },
+                {
+                  type: "field",
+                  fieldName: "RecorderName",
+                  label: "Your name or initials:"
+                },
+                {
+                  type: "field",
+                  fieldName: "SightingDate",
+                  label: "Date and time seen:"
+                }
+                ]
+              }
+            };
+          
+        });
+
+
+        // Create a custom group to separate the different areas of crime.
+        // This function takes a 'grouping' object containing a feature template and feature layer.
+
+        function customGroup(grouping) {
+            let groupHeading = "What basic form is it? Click the icon and add to the map, and then add details.";
+            return groupHeading;
+        }
+
+
         const editor = new Editor({
-          view: view,
-          layerInfos: [pointInfos],
-          visibleElements: {
-            settingsMenu: false
-          }
-        }); // End Editor constructor
+            view: view,
+            // Pass in the configurations.
+            layerInfos: [editCryptidsLayer],
+            // Override the default template behavior of the Editor widget
+            supportingWidgetDefaults: {
+                featureTemplates: {
+                groupBy: customGroup
+                }
+            }
+            }); // End Editor constructor
 
         // Create an Expand instance for the Editor and set the content
         // property to the DOM node of the Editor widget
@@ -305,25 +385,6 @@
 
         // Add the expand instance to the ui
         view.ui.add(editorExpand, "top-right");
-
-
-
-        // Add the widget to the view
-        //view.ui.add(editor, "top-right");
-
-        /*
-        // Create an Expand instance for the editor and set the content
-        // property to the DOM node of the Editor widget
-        const editorExpand = new Expand({
-          view: view,
-          content: editor
-        });
-
-        // Add the expand instance to the ui
-        view.ui.add(editorExpand, "top-right");
-        */
-
-
 
         // adding a legend
         let legend = new Legend({
@@ -382,6 +443,7 @@
             expandIcon: "filter",
             group: "top-left"
           });
+
           //clear the filters when user closes the expand widget
           reactiveUtils.when(
             () => !cryptidsExpand.expanded,
@@ -445,32 +507,60 @@
     
     <!-- The div to display the map -->
     <div id="viewDiv">
-      <!-- <div class="popup">
+       <div class="popup">
         <button id="close">&times;</button>
-        <h1>Welcome to Source to Sink!</h1>
+        <h1>Cryptids of the United States</h1>
+        <h2>A tool for gathering sightings of mysterious creatures</h2>
+        <p>A "cryptid" is defined as "an animal (such as Sasquatch or the Loch Ness Monster) that has been claimed to exist but never proven to exist." With this app, you'll be able to share information about any cryptid sightings you may have had. You can even record information while you're looking at it! Because cryptids are sometimes hard to see, start with the basic body shape and go from there.</p>
+        <p>The right side of the app is where you can enter location information and--most importantly--add info about your sighting. The left helps you modify the map, filter the cryptids, and view the map legend.</p>
         <p>
-            This is a tool to analyze where your water comes from.
-            Whether you're an expert on hydrology, or you just want to know where your water comes from, this tool can
-            help.
-            Begin by either entering in an address or picking a point on the map.
-            Also, explore different ways to see where you water comes from, or goes to! <br>
-            <br>
-  
-            Hover over or click individual watersheds for more information or enter a location in the search bar to zoom
-            to it!
+           <div class="navigationarea"> 
+            <table id="navigation">
+                <tr>
+                    <td colspan="5"><p><strong>Navigation symbols:</strong></p></td>
+                </tr>
+                <tr>
+                  <td><img src="images/icon-zoom.gif"></td>
+                  <td>Zoom in and out of the map</td>
+                  <td width="10%"></td>
+                  <td><img src="images/icon-search.gif"></td>
+                  <td>Toggle the address bar to type in a specific<br />address or location</td>
+                </tr>
+                <tr>
+                  <td><img src="images/icon-basemap.gif"></td>
+                  <td>Change the basemap layer</td>
+                  <td></td>
+                  <td><img src="images/icon-locate.gif"></td>
+                  <td>Center the map on your current location</td>
+                </tr>
+                <tr>
+                  <td><img src="images/icon-filter.gif"></td>
+                  <td>Toggle to filter by cryptid name</td>
+                  <td></td>
+                  <td><img src="images/icon-editor.gif"></td>
+                  <td>Toggle the editor window to add/edit data</td>
+                </tr>
+                <tr>
+                  <td><img src="images/icon-legend.gif"></td>
+                  <td>Open and close the map legend</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </table> 
+            </div>
   
         </p>
         <p>
-            Created by Mallory Johnson, Mike Imhoff, Drew ten Bensel, and <br> Alex Larson for UW-Madison Geography 575
-            - Spring 2023
+            Created by Eric Johnson for University of Wisconsin-Madison Geography 576 - Fall 2024
         </p>
         <p>
-            Data Gathered from: <a href="https://data-wi-dnr.opendata.arcgis.com/" target="_blank">WI DNR GIS Portal</a>
+            Much of the cryptid info came from: <a href="https://cryptidz.fandom.com/wiki/Cryptid_Wiki" target="_blank"><strong>Cryptid Wiki</strong></a>
         </p>
         <button id="letsGo">
-            <e href="#">Explore!</e>
+            <e href="#">Go!</e>
         </button>
-      </div> -->
+      </div>
     </div> 
 
 

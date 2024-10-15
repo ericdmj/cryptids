@@ -6,9 +6,9 @@
 }
 
 .popup {
-    background-image: linear-gradient(25deg, #7f674fad, #b19a83b4, #b19a83b4, #7f674fad);
+    background-image: linear-gradient(25deg, #81627aea, #b198abea, #b198abea, #81627aea);
     width: 75%;
-    padding: 30px 40px;
+    padding: 40px 50px;
     position: absolute;
     transform: translate(-50%, -50%);
     left: 50%;
@@ -17,20 +17,20 @@
     font-family: 'Playfair Display', 'Georgia', 'Times', serif;
     display: none;
     z-index: 10000000;
-    color: #403428;
+    color: #ffffff;
 }
 
 .popup h1 {
-    text-shadow: 0.75px 0.75px #ffffff;
+    text-shadow: 0.75px 0.75px #4D2042;
 }
 
 #letsGo {
     font-family: 'Playfair Display', 'Georgia', 'Times', serif;
-    color: azure;
+    color: #ffffff;
 }
 
 #close {
-    color: white;
+    color: #ffffff;
 }
 
 .popup button {
@@ -38,15 +38,23 @@
     margin: 0 0 20px auto;
     background-color: transparent;
     font-size: 30px;
-    color: #c5c5c5;
+    color: #ffffff;
     border: none;
     outline: none;
     cursor: pointer;
 }
 
-.popup p {
+.navigationarea {
+    width: 75%;
+    margin: 0 auto;
+}
+
+#navigation, .popup p {
     font-size: 14px;
     text-align: justify;
     margin: 16px 0;
 }
 
+#navigation td {
+    vertical-align: middle;
+}
