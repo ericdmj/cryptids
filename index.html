@@ -96,6 +96,12 @@
         const customBasemaps = [
             new Basemap({
                 portalItem: {
+                    id: "f35ef07c9ed24020aadd65c8a65d3754"  // Modern Antique Basemap ID
+                },
+                thumbnailUrl: "https://www.arcgis.com/sharing/rest/content/items/f35ef07c9ed24020aadd65c8a65d3754/info/thumbnail/thumbnail1584383047375.jpeg"
+            }),
+            new Basemap({
+                portalItem: {
                     id: "67ab7f7c535c4687b6518e6d2343e8a2"  // Ocean Basemap ID
                 },
                 thumbnailUrl: "https://www.arcgis.com/sharing/rest/content/items/67ab7f7c535c4687b6518e6d2343e8a2/info/thumbnail/thumbnail1561651100093.jpeg" // Correct URL for thumbnail
@@ -108,12 +114,6 @@
             }),
             new Basemap({
                 portalItem: {
-                    id: "f35ef07c9ed24020aadd65c8a65d3754"  // Modern Antique Basemap ID
-                },
-                thumbnailUrl: "https://www.arcgis.com/sharing/rest/content/items/f35ef07c9ed24020aadd65c8a65d3754/info/thumbnail/thumbnail1584383047375.jpeg"
-            }),
-            new Basemap({
-                portalItem: {
                     id: "867895a71a1840399476fc717e76bb43"  // Mid-Century Basemap ID
                 },
                 thumbnailUrl: "https://www.arcgis.com/sharing/rest/content/items/867895a71a1840399476fc717e76bb43/info/thumbnail/thumbnail1563382006810.jpeg"
@@ -123,6 +123,18 @@
                     id: "75a3ce8990674a5ebd5b9ab66bdab893"  // Newspaper Basemap ID
                 },
                 thumbnailUrl: "https://www.arcgis.com/sharing/rest/content/items/75a3ce8990674a5ebd5b9ab66bdab893/info/thumbnail/thumbnail1563382193586.jpeg"
+            }),
+            new Basemap({
+                portalItem: {
+                    id: "2e8a3ccdfd6d42a995b79812b3b0ebc6"  // Outdoor Basemap ID
+                },
+                thumbnailUrl: "https://www.arcgis.com/sharing/rest/content/items/2e8a3ccdfd6d42a995b79812b3b0ebc6/info/thumbnail/thumbnail1655484449400.png"
+            }),
+            new Basemap({
+                portalItem: {
+                    id: "52bdc7ab7fb044d98add148764eaa30a"  // Imagery(WGS84) Basemap ID
+                },
+                thumbnailUrl: "https://www.arcgis.com/sharing/rest/content/items/52bdc7ab7fb044d98add148764eaa30a/info/thumbnail/thumbnail1576867503263.jpeg"
             })
         ];
 
@@ -470,7 +482,8 @@
       }
 
       #cryptids-filter {
-        height: 160px;
+        max-height: 540px;
+        overflow-y: auto;
         width: 100%;
         visibility: hidden;
       }
@@ -496,11 +509,466 @@
   </head>
   <body>
 
+    <!-- creates the filter list -->
     <div id="cryptids-filter" class="esri-widget">
       <div class="cryptid-item visible-cryptid" data-cryptid="Aberdeen Wildman">Aberdeen Wildman</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Abominable Swamp Slob">Abominable Swamp Slob</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Abyssal Rainbow Gar">Abyssal Rainbow Gar</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Alaskan Giant Polar Bear">Alaskan Giant Polar Bear</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Albatwitch">Albatwitch</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Alien Bigfoot">Alien Bigfoot</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Alien Spores">Alien Spores</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Alkali Lake Monster">Alkali Lake Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Allegewi">Allegewi</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Altamaha-ha">Altamaha-ha</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="American Hyena">American Hyena</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="American Lion">American Lion</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Appalachian Chupacabra">Appalachian Chupacabra</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Argopelter">Argopelter</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Arizona Jaguar">Arizona Jaguar</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Arkansas Gowrow">Arkansas Gowrow</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Arkansas Snipe">Arkansas Snipe</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Ashuaps">Ashuaps</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Ausso One">Ausso One</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Averasboro Gallinipper">Averasboro Gallinipper</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Avian">Avian</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Axehandle Hound">Axehandle Hound</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Ball-Tailed Cat">Ball-Tailed Cat</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Baraboo Platypus">Baraboo Platypus</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Barnacle Tree">Barnacle Tree</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Basilosaurus">Basilosaurus</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Bassigator">Bassigator</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Batsquatch">Batsquatch</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Beaman">Beaman</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Bear Dogs">Bear Dogs</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Bear King of Marble Falls">Bear King of Marble Falls</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Bear Lake Monster">Bear Lake Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Beast of Bears">Beast of Bears</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Beast of Busco">Beast of Busco</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Beast of Gumhill">Beast of Gumhill</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Beast of the Land Between the Lakes">Beast of the Land Between the Lakes</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Beasts of Sherman">Beasts of Sherman</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Beaver Run Snow Gator">Beaver Run Snow Gator</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Bermuda Beast">Bermuda Beast</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Bermuda Blob">Bermuda Blob</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Bessie">Bessie</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Big Bird">Big Bird</div>
       <div class="cryptid-item visible-cryptid" data-cryptid="Bigfoot">Bigfoot</div>
-      <div class="cryptid-item visible-cryptid" data-cryptid="Wyvern">Wyvern</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Billdad">Billdad</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Black Eyed Children">Black Eyed Children</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Blue Headed Black Bear">Blue Headed Black Bear</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Boat hound">Boat hound</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Bobo">Bobo</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Bogeyman">Bogeyman</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Boggy Creek Monster">Boggy Creek Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Boqs">Boqs</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Boston Bahumagosh">Boston Bahumagosh</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Boston Lemur">Boston Lemur</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="British Columbia's Giant Raven">British Columbia's Giant Raven</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Bunnyman">Bunnyman</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Butler Gargoyle">Butler Gargoyle</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Butterfly People">Butterfly People</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Cactus Cat">Cactus Cat</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Cadborosaurus">Cadborosaurus</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Cameron Lake Monster">Cameron Lake Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Canadian and Cuban Albino Shark">Canadian and Cuban Albino Shark</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Canadian Chupacabra">Canadian Chupacabra</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Cape Sable Serpent">Cape Sable Serpent</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Carmel Area Creature">Carmel Area Creature</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Cassie">Cassie</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Celofay">Celofay</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Central American Whintosser">Central American Whintosser</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Champ">Champ</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Charles Mill Lake Monster">Charles Mill Lake Monster</div>
       <div class="cryptid-item visible-cryptid" data-cryptid="Chessie">Chessie</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Chiye-Tanka">Chiye-Tanka</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Chupacabra">Chupacabra</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Cole Hollow Road Monster">Cole Hollow Road Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Colossal Claude">Colossal Claude</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Columbia River Sand Squink">Columbia River Sand Squink</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Come-at-a-Body">Come-at-a-Body</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Cooncat">Cooncat</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Coonigator">Coonigator</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Cosmic Tree">Cosmic Tree</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Crawfordsville Monster">Crawfordsville Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Crazy Critter of Bald Mountain">Crazy Critter of Bald Mountain</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Creatures of the Deep Sea">Creatures of the Deep Sea</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Cressie">Cressie</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Crocodingo">Crocodingo</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Crocotta">Crocotta</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Cuba">Cuba</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Cumberland Dragon">Cumberland Dragon</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Dayton Area Phantom Panthers">Dayton Area Phantom Panthers</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Deer Man">Deer Man</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Deer Women">Deer Women</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Deridder Roadkill">Deridder Roadkill</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Devil monkey">Devil monkey</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Devil Monkeys">Devil Monkeys</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Devil's Lake Monster">Devil's Lake Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Dewayo">Dewayo</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Dingbat">Dingbat</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Dingbelle">Dingbelle</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Dingmaul">Dingmaul</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Diplocaulus">Diplocaulus</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Dire Wolf">Dire Wolf</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Doc Benton">Doc Benton</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Dogigator">Dogigator</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Domenech's Pseudo-goat">Domenech's Pseudo-goat</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Donkey Lady of San Antonio">Donkey Lady of San Antonio</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Doppelgänger">Doppelgänger</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Dover Demon">Dover Demon</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Dragon">Dragon</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Dublin Lake Monster">Dublin Lake Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Duck-Footed Dum-Dum">Duck-Footed Dum-Dum</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Dundas Island Blackfly">Dundas Island Blackfly</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Dungavenhooter">Dungavenhooter</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Eastern Cougar">Eastern Cougar</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="El Yunque Chupacabra">El Yunque Chupacabra</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Elmendorf Beast">Elmendorf Beast</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Enfield Horror">Enfield Horror</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Fifolet">Fifolet</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Fiji Mermaid">Fiji Mermaid</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Flathead Lake Monster">Flathead Lake Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Flatwoods Monster">Flatwoods Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Floridian Marine Reptiles">Floridian Marine Reptiles</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Flying Head">Flying Head</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Flying Rays">Flying Rays</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Folly Beach Monster">Folly Beach Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Frank Shaw's Gargoyle">Frank Shaw's Gargoyle</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Freshwater Monkey">Freshwater Monkey</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Fresno Nightcrawler">Fresno Nightcrawler</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Fsti Capcaki">Fsti Capcaki</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Funeral Mountain Terrashot">Funeral Mountain Terrashot</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Fur-Bearing Trout">Fur-Bearing Trout</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Garson Invaders">Garson Invaders</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Gator Man">Gator Man</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Gee-Gee Bird">Gee-Gee Bird</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Genoskwa">Genoskwa</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Gensou Hyouhon Hakubutsukan">Gensou Hyouhon Hakubutsukan</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Georgia Raptor">Georgia Raptor</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Ghost Camel">Ghost Camel</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Ghost Deer">Ghost Deer</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Ghoul">Ghoul</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Giant Catfish">Giant Catfish</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Giant Grasshoppers">Giant Grasshoppers</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Giant Rat">Giant Rat</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Giant Space Brains of Palos Verdes">Giant Space Brains of Palos Verdes</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Giddy fish">Giddy fish</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Gigantopithecus">Gigantopithecus</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Glacier Island Carcass">Glacier Island Carcass</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Glawackus">Glawackus</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Gloucester Sea Serpent">Gloucester Sea Serpent</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Glyptodon">Glyptodon</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Goatman">Goatman</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Godaphro">Godaphro</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Goofang">Goofang</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Grafton Monster">Grafton Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Grassman">Grassman</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Great Auk">Great Auk</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Griggstown Cow">Griggstown Cow</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Grunch Road Monster">Grunch Road Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Guam Marine Salamander">Guam Marine Salamander</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Gugwe">Gugwe</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Gumberoo">Gumberoo</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Guyascutus">Guyascutus</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Hamlet">Hamlet</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Hangdown">Hangdown</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Hat Man">Hat Man</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Hawaiian Monk Seal">Hawaiian Monk Seal</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Hellhounds">Hellhounds</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Henderson Island Monster">Henderson Island Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Hidebehind">Hidebehind</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="High-Finned Sperm Whale">High-Finned Sperm Whale</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Hodag">Hodag</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Hogzilla">Hogzilla</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Honey Island Swamp Monster">Honey Island Swamp Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Hoop Snake">Hoop Snake</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Hopkinsville Goblins">Hopkinsville Goblins</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Hudson River Monster">Hudson River Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Hugag">Hugag</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Humility">Humility</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Hvcko Capko">Hvcko Capko</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Hyampom Hog Bear">Hyampom Hog Bear</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Hydrarchos">Hydrarchos</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Igopogo">Igopogo</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Iliamna Lake Monster">Iliamna Lake Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Indrid Cold">Indrid Cold</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Iowa Dragons">Iowa Dragons</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Jackalope">Jackalope</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Jacko">Jacko</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Jake the Alligator Man">Jake the Alligator Man</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Jersey Devil">Jersey Devil</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Jumpin' Yuccy">Jumpin' Yuccy</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Kanas Lake Monster">Kanas Lake Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Kansas City Winged Demon">Kansas City Winged Demon</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Kiidk'yaas">Kiidk'yaas</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Kinderhook Blob">Kinderhook Blob</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Kingstie">Kingstie</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Kinosoo">Kinosoo</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Klicktitat Ape Cat">Klicktitat Ape Cat</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Koguhpuk">Koguhpuk</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Kraken">Kraken</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Kushtaka">Kushtaka</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Lac Wood Screecher">Lac Wood Screecher</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Lake Elsinore Monster">Lake Elsinore Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Lake Erie Chomper">Lake Erie Chomper</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Lake George Monster">Lake George Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Lake Herrington Monster">Lake Herrington Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Lake Monsters">Lake Monsters</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Lake Ontario Serpents">Lake Ontario Serpents</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Lake St. Clair Serpent">Lake St. Clair Serpent</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Lake Tahoe Monster">Lake Tahoe Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Lake Tarpon Monster">Lake Tarpon Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Lake Worth Monster">Lake Worth Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Lechuza">Lechuza</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Leprocaun">Leprocaun</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Lizard Man of Scape Ore Swamp">Lizard Man of Scape Ore Swamp</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Lizard Men">Lizard Men</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Lockridge Monster">Lockridge Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Log Gar">Log Gar</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Lone Pine Mountain Devil">Lone Pine Mountain Devil</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Loveland Frogmen">Loveland Frogmen</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Luferlang">Luferlang</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Lusca">Lusca</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="MacFarlane's Bear">MacFarlane's Bear</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Maned American Lion">Maned American Lion</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Manhattan Monster">Manhattan Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Manipogo">Manipogo</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Manitou">Manitou</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Mann Hill Island Carcass">Mann Hill Island Carcass</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Mannegishi">Mannegishi</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Mantis Man">Mantis Man</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Marked Hominids">Marked Hominids</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Marquette Monster">Marquette Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Maryland Goatman">Maryland Goatman</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Matah Kagmi">Matah Kagmi</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Matlox">Matlox</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Maumee River Monster">Maumee River Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Medford Shmoos">Medford Shmoos</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Melon Heads">Melon Heads</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Memphré">Memphré</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Men in Black">Men in Black</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Menehune">Menehune</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Messie">Messie</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Metal Man">Metal Man</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Metro Monster">Metro Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Miami Beach Scorpion">Miami Beach Scorpion</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Michelin Men">Michelin Men</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Michigan Dogman">Michigan Dogman</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Mike The Headless Chicken">Mike The Headless Chicken</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Milamo">Milamo</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Minashunka">Minashunka</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Miniwashitu">Miniwashitu</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Minnesota Dog-Man">Minnesota Dog-Man</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Minnesota Iceman">Minnesota Iceman</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Missouri's Giant Spider">Missouri's Giant Spider</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Mogollon Monster">Mogollon Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Momo">Momo</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Monongy">Monongy</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Montauk Monster">Montauk Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Moon Eyed People of North Carolina">Moon Eyed People of North Carolina</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Moore's Beach Monster">Moore's Beach Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Moose Monster">Moose Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Moss Man">Moss Man</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Mothman">Mothman</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Mud Mermaids">Mud Mermaids</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Mummy">Mummy</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Murphysboro Mud Monster">Murphysboro Mud Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Mussie">Mussie</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Nain Rouge">Nain Rouge</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Nantucket Blob">Nantucket Blob</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Napa Rebobs">Napa Rebobs</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Nape">Nape</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="NASA's Jellyfish Anomalies">NASA's Jellyfish Anomalies</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="New Louisiana Swamp Monster">New Louisiana Swamp Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="New River Inlet Carcass">New River Inlet Carcass</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="North Shore Monster">North Shore Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Northeast Region of North America">Northeast Region of North America</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Northern Giant">Northern Giant</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Northern Spoonbill">Northern Spoonbill</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Northwest Region">Northwest Region</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Not Deer">Not Deer</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Nuk-luk">Nuk-luk</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Obojoki">Obojoki</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Oggie">Oggie</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Ogopogo">Ogopogo</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Ogua">Ogua</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Oil Pit Squid">Oil Pit Squid</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Oklahoma Octopus">Oklahoma Octopus</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Ol' Slavey">Ol' Slavey</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Old Green Eyes">Old Green Eyes</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Old Saybrook Blockheads">Old Saybrook Blockheads</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Old Spider Legs">Old Spider Legs</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Old Yellow Top">Old Yellow Top</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="On the Map">On the Map</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Oomph">Oomph</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Opium-Pipe Fish">Opium-Pipe Fish</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Oracular Trees">Oracular Trees</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Orange Alligator">Orange Alligator</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Orange Eyes">Orange Eyes</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Owner of a Bag">Owner of a Bag</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Ozark Blue Man">Ozark Blue Man</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Ozark Howler">Ozark Howler</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Paddler">Paddler</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Pal Rai Yuk">Pal Rai Yuk</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Pale Crawlers">Pale Crawlers</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Papa Bois">Papa Bois</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Partridge Creek Monster">Partridge Creek Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Pascagoula Elephant Men">Pascagoula Elephant Men</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Patterson–Gimlin Footage">Patterson–Gimlin Footage</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Peat Ape">Peat Ape</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Pennsylvanian White Bigfoot">Pennsylvanian White Bigfoot</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Pepie Monster">Pepie Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Pérák">Pérák</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Phantom Kangaroo">Phantom Kangaroo</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Philamaloo Bird">Philamaloo Bird</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Piasa Bird">Piasa Bird</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Pope Lick Monster">Pope Lick Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Porpoise People">Porpoise People</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Pressie">Pressie</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Proctor Valley Monster">Proctor Valley Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Puerto Rican Chupacabra">Puerto Rican Chupacabra</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Pukwudgie">Pukwudgie</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Qallupilluit">Qallupilluit</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Qaxdascidi">Qaxdascidi</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Quetzalcoatlus">Quetzalcoatlus</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Qupqugiaq">Qupqugiaq</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Randolph County Cistern Creeper">Randolph County Cistern Creeper</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Raven Mocker">Raven Mocker</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Raystown Ray">Raystown Ray</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Rhinoceros Dolphin">Rhinoceros Dolphin</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="River Dinos">River Dinos</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Riverside Monster">Riverside Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Rochester Rat-Dog">Rochester Rat-Dog</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Roperite">Roperite</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Rougarou">Rougarou</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Rubberado">Rubberado</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Ruby Valley Beasts">Ruby Valley Beasts</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Rumptifusel">Rumptifusel</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Sabine Thing">Sabine Thing</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Sadie">Sadie</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Salamander">Salamander</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Sam Harris">Sam Harris</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="San Pedro Mountains mummy">San Pedro Mountains mummy</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Sand dragon">Sand dragon</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Santa Monica Giant Squid">Santa Monica Giant Squid</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Santer">Santer</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Sasquatch">Sasquatch</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Seal Rock Sea Monster">Seal Rock Sea Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Seatco">Seatco</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Sewer Alligator">Sewer Alligator</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Shadow People">Shadow People</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Sharlie">Sharlie</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Sheepsquatch">Sheepsquatch</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Sherman Beasts">Sherman Beasts</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Shunka Warakin">Shunka Warakin</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Si-Teh-Cas">Si-Teh-Cas</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Silver Lake Serpent">Silver Lake Serpent</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Sisiutl">Sisiutl</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Skin fin">Skin fin</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Skin-walker">Skin-walker</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Skookum">Skookum</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Skunk Ape">Skunk Ape</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Sky Serpents">Sky Serpents</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Slide-Rock Bolter">Slide-Rock Bolter</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Sliver Cat">Sliver Cat</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Smilodon">Smilodon</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Smithy">Smithy</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Snake-Headed Dog">Snake-Headed Dog</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Snallygaster">Snallygaster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Snawfus">Snawfus</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Snoligoster">Snoligoster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Snow Snake">Snow Snake</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Snow Wasset">Snow Wasset</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="South Carolina Thunderbird">South Carolina Thunderbird</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Space Brains of Palos Verdes">Space Brains of Palos Verdes</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Specter Moose">Specter Moose</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Splinter Cat">Splinter Cat</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Spottsville Monster">Spottsville Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Spring-Heeled Jack">Spring-Heeled Jack</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Squasholiger">Squasholiger</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Squidgicum-Squee">Squidgicum-Squee</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Squonk">Squonk</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="St. Augustine Monster">St. Augustine Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Steller's Sea Ape">Steller's Sea Ape</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Steller's sea cow">Steller's sea cow</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Swamp Auger">Swamp Auger</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Tahoe Tessie">Tahoe Tessie</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Tailypo">Tailypo</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Tammatuyuq">Tammatuyuq</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Teakettler">Teakettler</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Tennessee Red Cheetah">Tennessee Red Cheetah</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Tennessee Wildman">Tennessee Wildman</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Terror Birds">Terror Birds</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="The Beast of Bray Road">The Beast of Bray Road</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="The Black Fox of Salmon River">The Black Fox of Salmon River</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="The Buru, Giant Lizards and Giant Crocodiles">The Buru, Giant Lizards and Giant Crocodiles</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="The Bush Man">The Bush Man</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="The Cameron Village Sewer Blob">The Cameron Village Sewer Blob</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="The Dark Watchers">The Dark Watchers</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="The Haddock Goblin">The Haddock Goblin</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="The Legend of Sinkhole Sam">The Legend of Sinkhole Sam</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="The Red Ghost">The Red Ghost</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="The Tumor Seal of Mel’s Other Hole">The Tumor Seal of Mel’s Other Hole</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="The Turner Beast (Mutant Canine)">The Turner Beast (Mutant Canine)</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="The Werewolf of Werewolf Springs">The Werewolf of Werewolf Springs</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="The White Bluff Screamer">The White Bluff Screamer</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Thetis Lake Monster">Thetis Lake Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Thunderbird">Thunderbird</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Timberdoodle">Timberdoodle</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Todd Standing Bigfoot footage">Todd Standing Bigfoot footage</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Toronto Aerial Jellyfish">Toronto Aerial Jellyfish</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Toronto Tunnel Monster">Toronto Tunnel Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Toteroad Shagamaw">Toteroad Shagamaw</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Trinity Alps Giant Salamander">Trinity Alps Giant Salamander</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Tripodero">Tripodero</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="True Giants">True Giants</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Tsul 'Kalu">Tsul 'Kalu</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Turtle Lake Monster">Turtle Lake Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Tuscumbia Space Penguins">Tuscumbia Space Penguins</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Two-toed Tom">Two-toed Tom</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="UFO">UFO</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Ugjuknarpak">Ugjuknarpak</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Ugly Merman">Ugly Merman</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Undead">Undead</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Underwater Panther">Underwater Panther</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Unicorn">Unicorn</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Unknown Fish">Unknown Fish</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Up-island Spider">Up-island Spider</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Upland trout">Upland trout</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Urayuli">Urayuli</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Vampire">Vampire</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Vampire Beast">Vampire Beast</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Van Meter Visitor">Van Meter Visitor</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Waheela">Waheela</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Walker County Creature">Walker County Creature</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Wallowa Lake Freshwater Crustaceans">Wallowa Lake Freshwater Crustaceans</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Wallowa Lake Monster">Wallowa Lake Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Wamp">Wamp</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Wampus Cat">Wampus Cat</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Wanderlight">Wanderlight</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Wapaloosie">Wapaloosie</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Washington's Eagle">Washington's Eagle</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Waterford Sheepman">Waterford Sheepman</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Wendigo">Wendigo</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Werewolf">Werewolf</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="West Virginian Yahoo">West Virginian Yahoo</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Whiffenpoof">Whiffenpoof</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Whirligig fish">Whirligig fish</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Whirling Whimpus">Whirling Whimpus</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="White Death">White Death</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="White Oak's Skunk Ape">White Oak's Skunk Ape</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="White River Monster">White River Monster</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="White screamer">White screamer</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="White Things (Devil Dogs)">White Things (Devil Dogs)</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Wood Booger">Wood Booger</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Woods Devil">Woods Devil</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Woolly Mammoth">Woolly Mammoth</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Wunk">Wunk</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Wyvern">Wyvern</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Yukon Beaver Eater">Yukon Beaver Eater</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Yukontherium">Yukontherium</div>
+      <div class="cryptid-item visible-cryptid" data-cryptid="Ziphius (Cuvier's Beaked Whale)">Ziphius (Cuvier's Beaked Whale)</div>
     </div>
 
     <!-- creates pop-up instructions -->

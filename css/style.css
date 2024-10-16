@@ -6,7 +6,7 @@
 }
 
 .popup {
-    background-image: linear-gradient(25deg, #81627aea, #b198abea, #b198abea, #81627aea);
+    background-image: linear-gradient(25deg, #473643ea, #81627aea, #81627aea, #473643ea);
     width: 75%;
     padding: 40px 50px;
     position: absolute;
@@ -21,7 +21,12 @@
 }
 
 .popup h1 {
-    text-shadow: 0.75px 0.75px #4D2042;
+    text-shadow: 1.5px 1.5px #4D2042;
+    text-align: center;
+}
+
+.popup h2 {
+    text-align: center;
 }
 
 #letsGo {
@@ -49,10 +54,19 @@
     margin: 0 auto;
 }
 
-#navigation, .popup p {
+.popup p {
     font-size: 14px;
-    text-align: justify;
     margin: 16px 0;
+}
+
+#navigation {
+    font-size: 14px;
+    margin: 16px 0;
+}
+
+#navigation img {
+    margin-right: 10px;
+    margin-bottom: 5px;
 }
 
 #navigation td {
