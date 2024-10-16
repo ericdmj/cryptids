@@ -3,7 +3,7 @@
   <head>
     <title>Cryptids of the United States</title>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device width,initial-scale=1">
+    <meta name="viewport" content="width=device width,initial-scale=1.0">
     <meta name="description" content="" />
 
     <!-- adding my stylesheet -->
@@ -41,22 +41,7 @@
         // adding the constructor for the graphicslayer
         const graphicsLayer = new GraphicsLayer();  
         map.add(graphicsLayer);
-
-        
-
-        
-        /*     
-        // Adding the constructor for the counties feature layer
-        const countiesLayer = new FeatureLayer({
-          url: "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/USA_Census_Counties/FeatureServer/0",
-          geometryType: "polygon"
-
-        });
-
-        // Adding the feature layer to the map
-        map.add(countiesLayer);
-       */
-        
+       
         
         // creates the search box
         const searchWidget = new Search({
@@ -74,13 +59,6 @@
         // Add the expand instance to the ui
         view.ui.add(searchExpand, "top-right");
 
-
-        // Adds the search widget below other elements in
-        // the top left corner of the view
-        //view.ui.add(searchWidget, {
-          //position: "top-right",
-          //index: 2
-        //});
 
         // create the locate button
         const locateBtn = new Locate({
