@@ -17,3 +17,5 @@ I did create a filter and tweaked it so it could show a huge list of cryptid nam
 The icons (symbols) are only the five principle cryptid body types because creating an icon for each of hundreds of cryptids is rather a daunting proposition.
 
 Happy entering--please add as many as you'd like!
+
+(One final note: I have noticed that sometimes I have to reload the site to get it to display right, but I think that's because of my super-horrible hotel wifi. But I thought I should mention it!)
