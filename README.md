@@ -1,2 +1,11 @@
-# cryptidtest
-Using ESRI REST to edit ArcGIS Online data for my cryptid midterm
+### Title: _Cryptids of the United States_
+
+### Author: Eric Johnson
+
+### Code version:
+
+Last updated: October 16, 2024
+
+### Description:
+
+A full-stack app based on ArcGIS Online for capturing cryptid sightings in the U.S.
