@@ -22,7 +22,22 @@
     <script>  
       
       // sets the AMD modules
-      require(["esri/config", "esri/Map", "esri/views/MapView","esri/Basemap","esri/widgets/BasemapGallery","esri/widgets/Expand","esri/widgets/Locate","esri/widgets/Search","esri/Graphic","esri/layers/GraphicsLayer","esri/layers/FeatureLayer","esri/widgets/Editor","esri/widgets/Legend","esri/core/reactiveUtils"], function(esriConfig, Map, MapView, Basemap, BasemapGallery, Expand, Locate, Search, Graphic, GraphicsLayer, FeatureLayer, Editor, Legend, reactiveUtils) {   
+      require(["esri/config", 
+      "esri/Map", 
+      "esri/views/MapView",
+      "esri/Basemap",
+      "esri/widgets/BasemapGallery",
+      "esri/widgets/Expand",
+      "esri/widgets/Locate",
+      "esri/widgets/Search",
+      "esri/Graphic",
+      "esri/layers/GraphicsLayer",
+      "esri/layers/FeatureLayer",
+      "esri/widgets/Editor",
+      "esri/widgets/Legend",
+      "esri/core/reactiveUtils",
+      ], 
+      function(esriConfig, Map, MapView, Basemap, BasemapGallery, Expand, Locate, Search, Graphic, GraphicsLayer, FeatureLayer, Editor, Legend, reactiveUtils) {   
         let cryptidLayerView;
         esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurA0NJnJge5mvBzdWw05KZVSc-rH0g5ATkOEM72zKXv9kE7x87aUFvshXADkQU53T8CakkL1B1R2r7I2_9kfS1-XHaF7MVYxQ6VLd5p6tEgpzr75twGhsRz6fK1dSQ2ogOJ1_dHzcsbRTtsGi03Zua1qchYuESnptzJ80EJ1mYqWJo3iuugUMeoYeXbWxZQfRu9bQKBf9ibtwnTc5YG16I7WxJOj3SrYYt-VrPMyknXjtAT1_V1XfrGt6";
         // creates the map and assigns initial basemap
@@ -285,6 +300,33 @@
         outFields: ["CryptidName"]
 
         });
+        //add popup to cryptids layer 
+        cryptidsLayer.popupTemplate = {
+          title: "{CryptidName}",
+          content: [
+            {type:"text",
+              text: "<b>Date: {SightingDate}"
+            },
+            {type: "text",
+              text: "<b>Type:</b> {CryptidType}"
+            },
+            {type: "text",
+              text: "<b>Description:</b> {Description}"
+            },
+            {type: "text",
+              text:"<b>Locomotion:</b> {Locomotion}"
+            },
+            {type:"text",
+              text:"<b>Environment:</b> {Environment}"
+            },
+            {type:"text",
+              text: "<b>Spotted by:</b> {RecorderName}"
+            },
+            {type: "attachments"}
+
+          ]
+
+        }
 
         //adding the feature layer to the map
         map.add(cryptidsLayer);
@@ -344,7 +386,7 @@
         });
 
 
-        // Create a custom group to separate the different areas of crime.
+        // Create a custom group to separate the different cryptids.
         // This function takes a 'grouping' object containing a feature template and feature layer.
 
         function customGroup(grouping) {
@@ -413,9 +455,9 @@
         // click event handler for cryptids choices
         cryptidsElement.addEventListener("click", filterByCryptid);
 
-        // User clicked on Winter, Spring, Summer or Fall
-        // set an attribute filter on flood warnings layer view
-        // to display the warnings issued in that season
+        // User clicked on cryptid name
+        // set an attribute filter on cryptid layer view
+        // to display the sightings of that cryptid
         function filterByCryptid(event) {
           const selectedCryptid = event.target.getAttribute("data-cryptid");
           cryptidLayerView.filter = {
@@ -424,8 +466,7 @@
         }
 
         view.whenLayerView(cryptidsLayer).then((layerView) => {
-          // flash flood warnings layer loaded
-          // get a reference to the flood warnings layerview
+          // get a reference to the cryptid sightings layerview
           cryptidLayerView = layerView;
 
           // set up UI items
