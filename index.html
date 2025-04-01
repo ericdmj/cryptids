@@ -33,8 +33,8 @@
         // sets center point (via long and lat) and zoom level
         const view = new MapView({
           map: map,
-          center: [-98.583333, 39.833333], // Longitude, latitude
-          zoom: 4, // Zoom level
+          center: [-78.27761257959591, 37.17324020526729], // Longitude, latitude
+          zoom: 15, // Zoom level
           container: "viewDiv" // Div element
         });
 
@@ -131,18 +131,6 @@
 
         // Add the expand instance to the ui
         view.ui.add(bgExpand, "top-left");
-
-        /*
-        const cryptidsRenderer = {
-          "type": "simple",
-          "symbol": {
-            "type": "picture-marker",
-            "url": "https://img.icons8.com/?id=78608&format=png&color=0000AA",
-            "width": "30px",
-            "height": "30px"
-          }
-        }
-        */
 
         
         const colorhex = "4D2042";
@@ -274,7 +262,7 @@
 
         //adding the const for the feature layer
         const cryptidsLayer = new FeatureLayer({
-        url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/Cryptid_Sighting/FeatureServer",
+        url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/TwinLakes_gdb/FeatureServer/5",
         
         renderer: cryptidsRenderer, // calling the icon
 
@@ -286,8 +274,40 @@
 
         });
 
+
+        const parkLayer = new FeatureLayer({
+          // URL to the service
+          url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/TwinLakes_gdb/FeatureServer/4"
+        });
+
+        const lakeLayer = new FeatureLayer({
+          url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/TwinLakes_gdb/FeatureServer/3"
+        });
+
+        const trailsLayer = new FeatureLayer({
+          url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/TwinLakes_gdb/FeatureServer/2"
+        });
+
+        const lodgingLayer = new FeatureLayer({
+          url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/TwinLakes_gdb/FeatureServer/1"
+        });
+      
+        const amenitiesLayer = new FeatureLayer({
+          url: "https://services.arcgis.com/HRPe58bUyBqyyiCt/arcgis/rest/services/TwinLakes_gdb/FeatureServer/0"
+        });
+
+
+
+
+
         //adding the feature layer to the map
+        map.add(parkLayer);
+        map.add(lakeLayer);
+        map.add(trailsLayer);
+        map.add(lodgingLayer);
+        mapp.add(amenitiesLayer);
         map.add(cryptidsLayer);
+
 
         // Set the point layer's LayerInfo
         const pointInfos = {
