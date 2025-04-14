@@ -1,5 +1,5 @@
 //initial popup window
-window.addEventListener("load", function () {
+//window.addEventListener("load", function () {
   this.setTimeout(
       function open(event) {
           document.querySelector(".popup").style.display = "block";
